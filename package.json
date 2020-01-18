@@ -1,10 +1,10 @@
 {
-  "name": "vue-date-picker",
+  "name": "vue-calendar-pretty",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/vue-date-picker.ssr.js",
-  "module": "dist/vue-date-picker.esm.js",
-  "unpkg": "dist/vue-date-picker.min.js",
+  "main": "dist/vue-calendar-pretty.ssr.js",
+  "module": "dist/vue-calendar-pretty.esm.js",
+  "unpkg": "dist/vue-calendar-pretty.min.js",
   "files": [
     "dist/*",
     "src/**/*.vue",

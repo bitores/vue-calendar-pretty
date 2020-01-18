@@ -134,6 +134,7 @@
             ><span>{{ selDate.cYear }}年 【{{ selDate.sYear_zn }}年】</span
             ><span>{{ selDate.cMonth }}月 {{ selDate.cDay }}日</span>
           </p>
+          <center>{{ selDate.xz }}座</center>
         </div>
       </div>
       <div class="op-calendar-new-holidaytip" style="display: none;"></div>
@@ -145,13 +146,19 @@
 <script>
 import { calendar, getPreMonth, getNextMonth } from "./calendar";
 export default {
+  props: {
+    value: {
+      type: Date,
+      default: new Date()
+    }
+  },
   data() {
     return {
       years: [],
       months: [],
       dates: [],
-      cY: new Date().getFullYear(),
-      cM: new Date().getMonth(),
+      cY: this.value.getFullYear(),
+      cM: this.value.getMonth(),
       isInit: true,
       selDate: {}
     };
@@ -165,7 +172,7 @@ export default {
     this.months = months;
   },
   mounted() {
-    this.cal(new Date());
+    this.cal(this.value);
   },
   methods: {
     preMonth() {
@@ -194,6 +201,7 @@ export default {
       this.cM = date.sMonth - 1;
       this.isInit = false;
       this.changeDate();
+      this.$emit("change", date);
     },
     changeDate() {
       // this.selDate =
@@ -201,7 +209,9 @@ export default {
     },
     reback() {
       this.isInit = true;
-      this.cal(new Date());
+      this.cY = new Date().getFullYear();
+      this.cM = new Date().getMonth();
+      this.changeDate();
     },
     cal(date) {
       let cDate = new Date(date);

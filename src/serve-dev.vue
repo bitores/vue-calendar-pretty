@@ -1,17 +1,22 @@
 <script>
 import Vue from "vue";
-import { VueDatePicker } from "@/entry";
+import { VueCalendar } from "@/entry";
 
 export default Vue.extend({
   name: "app",
   components: {
-    VueDatePicker
+    VueCalendar
+  },
+  methods: {
+    change(d) {
+      console.log(d);
+    }
   }
 });
 </script>
 
 <template>
   <div id="app">
-    <vue-date-picker />
+    <vue-calendar :value="new Date()" @change="change" />
   </div>
 </template>

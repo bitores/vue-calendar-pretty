@@ -1,8 +1,9 @@
-import { lunarInfo, solarMonth, Gan, Zhi, Animals, solarTerm, sTermInfo, nStr1, nStr2, monthNameCN, monthName, sFtv, lFtv, wFtv } from './common';
+import { lunarInfo, solarMonth, Gan, Zhi, Animals, solarTerm, sTermInfo, nStr1, nStr2, monthNameCN, monthName, xingZuo, sFtv, lFtv, wFtv } from './common';
 /*****************************************************************************
+
+
 日期计算
 *****************************************************************************/
-
 //====================================== 返回农历 y年的总天数
 function lYearDays(y) {
   var i, sum = 348;
@@ -97,6 +98,11 @@ function easter(y) {
 
 }
 
+// 根据生日的月份和日期，计算星座。m 1-12
+function astro(m, d) {
+  return xingZuo.join("").substr(m * 2 - (d < "102223444433".charAt(m - 1) - -19) * 2, 2);
+}
+
 //====================== 中文星期
 function znWeek(w) {
   return nStr1[w];
@@ -136,7 +142,6 @@ export function getPreMonth(date) {
     month2 = 11;
   }
 
-  var t2 = year2 + '-' + month2;
   return [year2, month2];
 }
 /*获取下个月*/
@@ -151,7 +156,6 @@ export function getNextMonth(date) {
     year2 = parseInt(year2) + 1;
     month2 = 0;
   }
-  var t2 = year2 + '-' + month2;
   return [year2, month2];
 }
 
@@ -164,7 +168,7 @@ function calTable(sYear, sMonth, sDay, week, lYear, lMonth, lDay, isLeap, cYear,
   this.sYear = sYear;   //公元年4位数字
   this.sYear_zn = Animals[(sYear - 4) % 12]; //生肖年
   this.sMonth = sMonth;  //公元月数字
-  this.sMonth_zn = monthNameCN[sMonth];  //公元月数字
+  this.sMonth_zn = monthNameCN[sMonth - 1];  //公元月数字
   this.sDay = sDay;    //公元日数字
   this.week = week;    //星期, 1个中文
   this.week_zn = znWeek(week);    //星期, 1个中文
@@ -178,6 +182,8 @@ function calTable(sYear, sMonth, sDay, week, lYear, lMonth, lDay, isLeap, cYear,
   this.cYear = cYear;   //年柱, 2个中文
   this.cMonth = cMonth;  //月柱, 2个中文
   this.cDay = cDay;    //日柱, 2个中文
+  // 
+  this.xz = astro(sMonth, sDay);
 
   this.color = '';
 

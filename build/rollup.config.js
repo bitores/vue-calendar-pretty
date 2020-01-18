@@ -70,7 +70,7 @@ if (!argv.format || argv.format === 'es') {
     ...baseConfig,
     external,
     output: {
-      file: 'dist/vue-date-picker.esm.js',
+      file: 'dist/vue-calendar-pretty.esm.js',
       format: 'esm',
       exports: 'named',
     },
@@ -99,7 +99,7 @@ if (!argv.format || argv.format === 'cjs') {
     external,
     output: {
       compact: true,
-      file: 'dist/vue-date-picker.ssr.js',
+      file: 'dist/vue-calendar-pretty.ssr.js',
       format: 'cjs',
       name: 'VueDatePicker',
       exports: 'named',
@@ -126,7 +126,7 @@ if (!argv.format || argv.format === 'iife') {
     external,
     output: {
       compact: true,
-      file: 'dist/vue-date-picker.min.js',
+      file: 'dist/vue-calendar-pretty.min.js',
       format: 'iife',
       name: 'VueDatePicker',
       exports: 'named',
