@@ -1,7 +1,7 @@
 {
   "name": "vue-calendar-pretty",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "calendar",
   "main": "dist/vue-calendar-pretty.ssr.js",
   "module": "dist/vue-calendar-pretty.esm.js",
   "unpkg": "dist/vue-calendar-pretty.min.js",
@@ -45,9 +45,7 @@
     "node": ">=8"
   },
   "keywords": [
-    "vue",
-    "antd",
-    "Form"
+    "vue"
   ],
   "repository": {
     "type": "git",

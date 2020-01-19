@@ -1,4 +1,4 @@
-import { lunarInfo, solarMonth, Gan, Zhi, Animals, solarTerm, sTermInfo, nStr1, nStr2, monthNameCN, monthName, xingZuo, vacationBreak, sFtv, lFtv, wFtv } from './common';
+import { lunarInfo, solarMonth, Gan, Zhi, Animals, solarTerm, sTermInfo, nStr1, nStr2, monthNameCN, monthName, xingZuo, sFtv, lFtv, wFtv } from './common';
 /*****************************************************************************
 
 
@@ -322,7 +322,7 @@ export function calendar(y, m) {
     }
 
 
-  //复活节只出现在3或4月
+  //复活节只出现在3或4月, 每年过春分月圆后的第一个星期天为复活节
   if (m == 2 || m == 3) {
     var estDay = new easter(y);
     if (m == estDay.m)
@@ -332,9 +332,9 @@ export function calendar(y, m) {
 
   if (m == 2) this[20].solarFestival = this[20].solarFestival + unescape('%20%u6D35%u8CE2%u751F%u65E5');
 
-  //黑色星期五
-  if ((this.firstWeek + 12) % 7 == 5)
-    this[12].solarFestival += '黑色星期五';
+  // //黑色星期五
+  // if ((this.firstWeek + 12) % 7 == 5)
+  //   this[12].solarFestival += '黑色星期五';
 
   var Today = new Date();
   var tY = Today.getFullYear();

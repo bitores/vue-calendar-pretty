@@ -82,8 +82,8 @@
                         hidefocus="true"
                         :class="{
                           'op-calendar-new-table-work': date.isBreak == 2,
+                          'op-calendar-new-table-rest': date.isBreak == 1,
                           'op-calendar-new-table-other-month': date.other,
-                          'op-calendar-new-table-rest': false,
                           'op-calendar-new-table-weekend':
                             [0, 6].indexOf(date.week) > -1,
                           'op-calendar-new-table-festival':
@@ -274,10 +274,17 @@ export default {
           if (vacationBreak.indexOf(str) > -1) {
             if (item.week !== 6 && item.week !== 0) {
               item.isBreak = 1;
+            } else {
             }
           } else {
-            if (item.week == 6 || item.week == 0) {
+            if (
+              item.sYear <= 2020 &&
+              item.sYear >= 2010 &&
+              (item.week == 6 || item.week == 0)
+            ) {
               item.isBreak = 2;
+            } else {
+              item.isBreak = 3; // 未知
             }
           }
         });
