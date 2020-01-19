@@ -1,6 +1,6 @@
 {
   "name": "vue-calendar-pretty",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/vue-calendar-pretty.ssr.js",
   "module": "dist/vue-calendar-pretty.esm.js",
@@ -43,5 +43,21 @@
   },
   "engines": {
     "node": ">=8"
-  }
+  },
+  "keywords": [
+    "vue",
+    "antd",
+    "Form"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitores/vue-calendar-pretty.git"
+  },
+  "author": "bitores",
+  "email": "huangzhengjie@dingtalk.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bitores/vue-calendar-pretty/issues"
+  },
+  "homepage": "https://github.com/bitores/vue-calendar-pretty#readme"
 }

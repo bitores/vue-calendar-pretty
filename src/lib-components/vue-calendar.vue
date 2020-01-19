@@ -81,6 +81,7 @@
                         href="javascript:;"
                         hidefocus="true"
                         :class="{
+                          'op-calendar-new-table-work': date.isBreak == 2,
                           'op-calendar-new-table-other-month': date.other,
                           'op-calendar-new-table-rest': false,
                           'op-calendar-new-table-weekend':
@@ -89,18 +90,21 @@
                             date.lunarFestival !== '' ||
                             date.solarFestival !== '' ||
                             date.solarTerms !== '',
+                          'op-calendar-new-table-border op-calendar-new-table-selected':
+                            date.isToday && date.isBreak == 2,
                           'op-calendar-new-table-today op-calendar-new-table-selected':
-                            date.isToday
+                            date.isToday && date.isBreak !== 2
                         }"
                       >
+                        <!--  -->
                         <span
                           class="op-calendar-new-table-holiday-sign"
-                          v-if="false"
+                          v-if="date.isBreak == 1"
                           >休</span
                         >
                         <span
                           class="op-calendar-new-table-holiday-sign"
-                          v-if="false"
+                          v-if="date.isBreak == 2"
                           >班</span
                         >
                         <span class="op-calendar-new-daynumber">{{
@@ -145,6 +149,7 @@
 
 <script>
 import { calendar, getPreMonth, getNextMonth } from "./calendar";
+import { vacationBreak } from "./vacation-break";
 export default {
   props: {
     value: {
@@ -213,6 +218,7 @@ export default {
       this.cM = new Date().getMonth();
       this.changeDate();
     },
+    // 逻辑待优化
     cal(date) {
       let cDate = new Date(date);
       let uDate = getPreMonth(cDate);
@@ -257,6 +263,25 @@ export default {
         k++;
       }
 
+      // 计算节假休息日及调休
+      ret.map(arr => {
+        arr.map(item => {
+          // item.ok = true;
+          const { sYear, sMonth, sDay } = item;
+          let str = `${sYear}${sMonth > 9 ? sMonth : "0" + sMonth}${
+            sDay > 9 ? sDay : "0" + sDay
+          }`;
+          if (vacationBreak.indexOf(str) > -1) {
+            if (item.week !== 6 && item.week !== 0) {
+              item.isBreak = 1;
+            }
+          } else {
+            if (item.week == 6 || item.week == 0) {
+              item.isBreak = 2;
+            }
+          }
+        });
+      });
       this.dates = ret;
     }
   }

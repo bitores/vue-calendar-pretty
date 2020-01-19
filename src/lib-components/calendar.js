@@ -1,4 +1,4 @@
-import { lunarInfo, solarMonth, Gan, Zhi, Animals, solarTerm, sTermInfo, nStr1, nStr2, monthNameCN, monthName, xingZuo, sFtv, lFtv, wFtv } from './common';
+import { lunarInfo, solarMonth, Gan, Zhi, Animals, solarTerm, sTermInfo, nStr1, nStr2, monthNameCN, monthName, xingZuo, vacationBreak, sFtv, lFtv, wFtv } from './common';
 /*****************************************************************************
 
 
